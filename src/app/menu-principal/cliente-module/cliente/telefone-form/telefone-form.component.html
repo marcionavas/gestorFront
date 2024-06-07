@@ -1,0 +1,39 @@
+<div class="row" [formGroup]="group">
+  <div class="col-sm-12" id="div-telefones" [formArrayName]="'telefones'">
+
+
+    <div id="telefone" *ngFor="let tel of group.get('telefones')['controls']; let i = index" formGroupName={{i}}>
+      <input hidden [formControlName]="'id'">
+
+      <mat-form-field appearance="legacy" class="campo-tel">
+        <mat-label>Telefone {{i+1}}:</mat-label>
+        <input type="text" matInput placeholder="(99)99999-9999" [formControlName]="'telefone'" (input)="teste()">
+        <mat-hint></mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy" class="campo-sobre">
+        <mat-label>Sobre o telefone {{i+1}}:</mat-label>
+        <input type="text" matInput placeholder="Casa/TIM/Mãe" [formControlName]="'sobre'">
+      </mat-form-field>
+
+
+      <button class="btn-remove-small btn btn-outline-danger" id="btn-remove" type="button" name="remover" (click)="removeTelefone(i)">
+        <img class="img-remove-btn" src="../../../../../assets/icons/delete.ico">
+      </button>
+      <span id="radio-principal">
+        <!-- <label><input type="radio" name="telefonePrincipal" [value]="tel.value['telefone']" >Principal</label> -->
+        <label><input type="radio" name="telefonePrincipal" value="tel.value['telefone']" >Principal</label>
+        
+
+        <!-- <p>{{tel.value['telefone'] |json}}</p> -->
+        <!-- <p>{{group.get('telefonePrincipal').value}}</p> -->
+      </span>
+
+    </div>
+    <input class="btn btn-primary btn-lg btn-block" type="button" value="Adicionar um {{group.get('telefones')['length']+1}}º telefone"
+      (click)="addTelefone()">
+
+    <p>{{group.value['telefones']|json}}</p>
+
+  </div>
+</div>

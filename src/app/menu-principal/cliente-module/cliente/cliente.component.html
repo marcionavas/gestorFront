@@ -1,0 +1,88 @@
+<div class="form-inline">
+  <button (click)="voltarMenuPrincipal()">❮</button>
+  <img class="rounded-circle" src="../../../../assets/icons/clients.png" alt="Ícone clientes" width="60" height="60">
+  <h1>Clientes</h1>
+</div>
+
+<form [formGroup]="formulario" novalidate (ngSubmit)="salvarCliente()">
+  <div class="float-right col-sm-2" id="menu-lateral">
+    <button type="submit" class="btn btn-success btn-lg btn-block">Salvar</button><br>
+    <button type="button" class="btn btn-primary btn-lg btn-block">Novo</button><br>
+    <button type="button" class="btn btn-danger btn-lg btn-block">Excluir</button><br>
+    <button type="button" class="btn btn-light btn-lg btn-block">Buscar</button><br>
+  </div>
+  <div class="navbar fixed-bottom navbar-light bg-light" id="menu-inferior">
+    <div class="">
+
+      <button type="button" class="rounded-circle btn btn-danger" name="remover">
+        <img class="img-bottom-bar-btn" src="../../../../../assets/icons/delete.ico">
+      </button>
+
+      <button type="button" class="rounded-circle btn" name="Novo">
+
+      </button>
+
+      <button type="button" class="rounded-circle btn" name="Buscar">
+
+      </button>
+
+      <button type="button" class="rounded-circle btn btn-inferior-salvar" name="Salvar">
+          <img class="img-bottom-bar-btn" src="../../../../assets/icons/Ok-icon.png">
+      </button>
+
+    </div>
+  </div>
+
+  <label><input type="radio" checked name="pessoa" value="pf" (click)="setPf()" formControlName="pessoa"> Pessoa Física<br></label>
+  <label><input type="radio" name="pessoa" value="pj" (click)="setPj()" formControlName="pessoa"> Pessoa Jurídica<br></label>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-7">
+        <input name="id" hidden formControlName="id">
+
+        <mat-form-field id="nomeRazao">
+          <input name="Nome" matInput placeholder={{nomeRazao}} formControlName="nomeRazao">
+        </mat-form-field>
+        
+          <h5 class="hidden-on-small">*Telefone(s):</h5>
+          <telefone-form [group]="formulario"></telefone-form>      
+      </div>
+
+      <div class="col-sm-5">
+        <mat-list>
+          <mat-list-item>
+            <mat-form-field>
+              <input name="Apelido" matInput placeholder={{apelidoNomeFant}} formControlName="apelidoNomeFant">
+            </mat-form-field>
+          </mat-list-item>
+
+          <mat-list-item>
+            <mat-form-field>
+              <input name="CPF" matInput placeholder={{cpfCnpj}} formControlName="cpfCnpj">
+            </mat-form-field>
+          </mat-list-item>
+
+          <mat-list-item>
+            <mat-form-field>
+              <input name="Identidade" matInput placeholder={{iDInscEstadual}} formControlName="iDInscEstadual">
+            </mat-form-field>
+          </mat-list-item>
+
+          <mat-list-item>
+            <mat-form-field>
+              <input matInput readonly [matDatepicker]="picker" placeholder={{dataNascFund}} formControlName="dataNascFund">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+    <fieldset class="col-sm-12">
+      <h5 class="hidden-on-small">Endereço(s):</h5>
+      <!-- <endereco-form [group]="formulario"></endereco-form> -->
+    </fieldset>
+  </div>
+</form>

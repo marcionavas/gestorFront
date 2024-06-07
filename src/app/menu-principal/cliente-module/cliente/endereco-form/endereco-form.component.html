@@ -1,0 +1,50 @@
+<div class="container-fluid" >
+  <div class="row" [formGroup]="group">
+    <div style="height: 8em; overflow-y: scroll;" [formArrayName]="'enderecos'" id="enderecosDiv">
+
+
+      <div *ngFor="let x of group.get('enderecos')['controls']; let i = index" formGroupName={{i}}>
+        <input type="text" name="id" [formControlName]="'id'" hidden>
+
+        <mat-form-field appearance="legacy" class="campo-endereco">
+          <mat-label>Endereço completo:</mat-label>
+          <input type="text" matInput placeholder="Rua XXX, Nº123 - Meu Bairro" [formControlName]="'endereco'">
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Complemento:</mat-label>
+          <input matInput placeholder="AP:999" type="text" [formControlName]="'complemento'">
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" class="campo-cep">
+          <mat-label>CEP:</mat-label>
+          <input matInput placeholder="99.999-999" type="text" [formControlName]="'cep'">
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Cidade:</mat-label>
+          <input matInput placeholder="Cidade" [formControlName]="'cidade'">
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" class="campo-uf">
+          <mat-label>UF:</mat-label>
+          <input matInput placeholder="UF" [formControlName]="'uf'">
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Sobre:</mat-label>
+          <input matInput placeholder="Casa/Trabalho" [formControlName]="'sobre'">
+        </mat-form-field>
+
+        <button type="button" class="btn-remove-small btn btn-outline-danger" name="remover" (click)="removeEndereco(i)">
+          <img class="img-remove-btn" src="../../../../../assets/icons/delete.ico">
+        </button>
+
+        <label><input type="radio" [formControlName]="'principal'" [value]="true">Principal</label>
+      </div>
+
+      <input class="btn btn-primary btn-lg btn-block" type="button" value="Adicionar mais um endereço" (click)="addEndereco()">
+
+    </div>
+  </div>
+</div>

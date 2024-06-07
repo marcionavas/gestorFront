@@ -1,0 +1,29 @@
+.mat-form-field{
+    margin-right: 1em;
+}
+
+.campo-cep{
+    width: 6em;
+}
+
+.campo-uf{
+    width: 3em;
+}
+
+.campo-endereco{
+    width: 23em;
+}
+
+.btn-remove-small{
+    margin-left: 1em;
+    margin-right: 1em;
+
+}
+
+.img-remove-btn{
+    width: 1.6em;
+    height: auto;
+}
+#enderecosDiv{
+   width: 100%
+}

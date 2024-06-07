@@ -1,0 +1,18 @@
+.img-bottom-bar-btn {
+    width: 1.5em;
+    height: auto;
+}
+
+#menu-inferior {
+    height: 10%;
+}
+
+.btn-inferior-salvar {
+    float: right;
+}
+
+@media screen and (max-width: 577px) {
+    .hidden-on-small {
+        display: none;
+    }
+}
